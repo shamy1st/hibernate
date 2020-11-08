@@ -116,26 +116,26 @@ example Instructor, InstructorDetail
     * **Uni Directional**
     * **Bi Directional**
     
-        public class Instructor {
-            @OneToOne(cascade=CascadeType.All)
-            @JoinColumn(name="instructor_detail_id")
-            private InstructorDetail instructorDetail;
-            ...
-        }
-        
-        public class InstructorDetail {
-            @OneToOne(mappedBy="instructorDetail")
-            private Instructor instructor;
-            ...
-        }
+            public class Instructor {
+                @OneToOne(cascade=CascadeType.All)
+                @JoinColumn(name="instructor_detail_id")
+                private InstructorDetail instructorDetail;
+                ...
+            }
+            
+            public class InstructorDetail {
+                @OneToOne(mappedBy="instructorDetail")
+                private Instructor instructor;
+                ...
+            }
     
- * **Prevent Cascade Delete**
+   * **Prevent Cascade Delete**
 
-        public class InstructorDetail {
-            @OneToOne(mappedBy="instructorDetail", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFESH})
-            private Instructor instructor;
-            ...
-        }
+            public class InstructorDetail {
+                @OneToOne(mappedBy="instructorDetail", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFESH})
+                private Instructor instructor;
+                ...
+            }
 
 
 
