@@ -100,6 +100,41 @@ Persist   | transitions new instances to managed state, next flush/commit will s
 Remove    | transitions managed entity to be removed, next flush/commit will delete from DB
 Refresh   | Reload/Synch object with data from DB. this prevent stale data.
 
+### Cascade
+
+type    | description
+--------|---------------------------------------------------------------------
+Persist | if entity is persisted/saved, related entity will also be persisted
+Remove  | if entity is removed/deleted, related entity will also be deleted
+Refresh | if entity is refreshed, related entity will also be refreshed
+Detach  | if entity is detached, related entity will also be detached
+Merge   | if entity is merged, related entity will also be merged
+All     | all of above cascade types
+
+* **@OneToOne**
+example Instructor, InstructorDetail
+    * **Uni Directional**
+    * **Bi Directional**
+
+        @OneToOne(cascade=CascadeType.All)          | @OneToOne(mappedBy="instructorDetail")
+        @JoinColumn(name="instructor_detail_id")    | private Instructor instructor;
+        private InstructorDetail instructorDetail;
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
