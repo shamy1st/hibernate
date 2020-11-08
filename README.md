@@ -111,8 +111,7 @@ Detach  | if entity is detached, related entity will also be detached
 Merge   | if entity is merged, related entity will also be merged
 All     | all of above cascade types
 
-* **@OneToOne**
-example Instructor, InstructorDetail
+* **@OneToOne** example Instructor, InstructorDetail
     * **Uni Directional**
     * **Bi Directional**
     
@@ -136,6 +135,44 @@ example Instructor, InstructorDetail
                 private Instructor instructor;
                 ...
             }
+
+* **@OneToMany @ManyToOne** example Course, Instructor (**Bi Directional**)
+
+        public class Course {
+            @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFESH})
+            @JoinColumn(name="instrcutor_id")
+            private Instructor instructor;
+            ....
+        }
+
+        public class Instructor {
+            @OneToMany(mappedBy="instructor", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFESH})
+            private List<Course> courses;
+        }
+
+### Fetch Types
+
+Two Types
+ * **Easger**: retrieve everything
+ * **Lazy**: retrieve on request
+
+
+mapping     | default fetch type
+------------|-------------------
+@OneToOne   | FetchType.EAGER
+@OneToMany  | FetchType.LAZY
+@ManyToOne  | FetchType.EAGER
+@ManyToMany | FetchType.LAZY
+
+
+
+
+
+
+
+
+
+
 
 
 
