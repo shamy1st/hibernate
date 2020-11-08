@@ -170,17 +170,29 @@ mapping     | default fetch type
         private Instructor instructor;
 
 ```diff
-- Warn: for LAZY you should have open session, if the session closed it will throw exception.</div>
+- Warn: for LAZY you should have open session, if the session closed it will throw exception.
 ```
 
+* **solution**: use "JOIN FETCH" in the query to load everything at once.
 
+        Query<Instructor> query = session.createQuery("select i from Instructor i" 
+            + "JOIN FETCH i.courses where i.id=: instructorId", Instructor.class);
 
+* **@OneToMany** (Uni Directional) example Course, Review
 
+        public class Course {
+            @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.All)
+            @JoinColumn(name="course_id")
+            private List<Review> reviews;
+            ...
+        }
+        
+        public class Review {
+            //nothing
+            ...
+        }
 
-
-
-
-
+* **@ManyToMany**
 
 
 
