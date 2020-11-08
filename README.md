@@ -169,9 +169,7 @@ mapping     | default fetch type
         @JoinColumn(name="instructor_id")
         private Instructor instructor;
 
-``
-- Warn: for LAZY you should have open session, if the session closed it will throw exception.
-``
+<div class="text-red">Warn: for LAZY you should have open session, if the session closed it will throw exception.</div>
 
 
 
