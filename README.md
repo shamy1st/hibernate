@@ -192,37 +192,25 @@ mapping     | default fetch type
             ...
         }
 
-* **@ManyToMany**
+* **@ManyToMany** example Course, Student
 
+        public class Course {
+            @ManyToMany
+            @JoinTable(name="course_student", joinColumns=@JoinColumn(name="course_id")
+                , inverseJoinColumns=@JoinColumn(name="student_id"))
+            private List<Student> students;
+            ...
+        }
+        
+        public class Student {
+            @ManyToMany
+            @JoinTable(name="course_student", joinColumns=@JoinColumn(name="student_id")
+                , inverseJoinColumns=@JoinColumn(name="course_id"))
+            private List<Course> courses;
+        }
 
+* **LAZY loading & Prevent cascade delete**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        @ManyToMany(fetch=FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFESH})
+        @JoinTable(...)
 
