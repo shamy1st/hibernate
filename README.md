@@ -42,12 +42,12 @@
 
 * **Generation Strategies**
 
-strategy                | description
-------------------------|------------------------------------------------------------
-GenerationType.AUTO     | pick an appropriate strategy for the particular DB
-GenerationType.IDENTITY | assign PK using DB identity column
-GenerationType.SEQUENCE | assign PK using DB sequence
-GenerationType.TABLE    | assign PK using an underlying DB table to ensure uniqueness
+    strategy                | description
+    ------------------------|------------------------------------------------------------
+    GenerationType.AUTO     | pick an appropriate strategy for the particular DB
+    GenerationType.IDENTITY | assign PK using DB identity column
+    GenerationType.SEQUENCE | assign PK using DB sequence
+    GenerationType.TABLE    | assign PK using an underlying DB table to ensure uniqueness
 
 * **Custom Generation Strategy**
     * create implementation of **org.hibernate.id.IdentifierGenerator**
