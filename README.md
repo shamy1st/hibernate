@@ -50,9 +50,9 @@ GenerationType.SEQUENCE | assign PK using DB sequence
 GenerationType.TABLE    | assign PK using an underlying DB table to ensure uniqueness
 
 * **Custom Generation Strategy**
- * create implementation of **org.hibernate.id.IdentifierGenerator**
- * override the method: public Serializable generate(...)
-
+    * create implementation of **org.hibernate.id.IdentifierGenerator**
+    * override the method: public Serializable generate(...)
+    
 * **Starting value of PK**
 
         ALTER TABLE schema.table_name AUTO_INCREMENT=3000;
