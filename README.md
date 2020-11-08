@@ -152,10 +152,9 @@ All     | all of above cascade types
 
 ### Fetch Types
 
-Two Types
- * **Easger**: retrieve everything
- * **Lazy**: retrieve on request
-
+* Two Types
+    * **Eager**: retrieve everything
+    * **Lazy**: retrieve on request
 
 mapping     | default fetch type
 ------------|-------------------
@@ -164,9 +163,15 @@ mapping     | default fetch type
 @ManyToOne  | FetchType.EAGER
 @ManyToMany | FetchType.LAZY
 
+* you can override the FetchType
 
+        @ManyToOne(fetch=FetchType.LAZY)
+        @JoinColumn(name="instructor_id")
+        private Instructor instructor;
 
-
+``
+- Warn: for LAZY you should have open session, if the session closed it will throw exception.
+``
 
 
 
