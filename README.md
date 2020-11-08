@@ -115,13 +115,27 @@ All     | all of above cascade types
 example Instructor, InstructorDetail
     * **Uni Directional**
     * **Bi Directional**
-
-        @OneToOne(cascade=CascadeType.All)          | @OneToOne(mappedBy="instructorDetail")
-        @JoinColumn(name="instructor_detail_id")    | private Instructor instructor;
-        private InstructorDetail instructorDetail;
-
-
+    
+        public class Instructor {
+            @OneToOne(cascade=CascadeType.All)
+            @JoinColumn(name="instructor_detail_id")
+            private InstructorDetail instructorDetail;
+            ...
+        }
         
+        public class InstructorDetail {
+            @OneToOne(mappedBy="instructorDetail")
+            private Instructor instructor;
+            ...
+        }
+    
+ * **Prevent Cascade Delete**
+
+        public class InstructorDetail {
+            @OneToOne(mappedBy="instructorDetail", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFESH})
+            private Instructor instructor;
+            ...
+        }
 
 
 
